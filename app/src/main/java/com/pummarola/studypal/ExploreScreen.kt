@@ -123,13 +123,7 @@ fun ExploreScreen(onBack: () -> Unit, onNavigateToDetail: (String) -> Unit) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = onBack,
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.LightGray)
-        ) {
-            Text("Torna alla Home", color = Color.Black)
-        }
+
     }
 }
 

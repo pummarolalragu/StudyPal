@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.pummarola.studypal.ui.theme.AccentBlue
 import com.pummarola.studypal.ui.theme.NeonCyan
 import com.pummarola.studypal.ui.theme.NeonYellow
 
@@ -116,13 +117,11 @@ fun ExploreDetailScreen(materia: String, onBack: () -> Unit, onJoin: () -> Unit)
         Spacer(modifier = Modifier.height(10.dp))
 
         // Bottone Indietro
-        TextButton(onClick = onBack, modifier = Modifier.fillMaxWidth()) {
-            Text("Torna all'Esplora", color = Color.Gray)
-        }
     }
 }
 
 // Componente per visualizzare una singola riga di partecipante
+// Sostituisci questa funzione in fondo a ExploreDetailScreen.kt
 @Composable
 fun PartecipanteRow(partecipante: Partecipante) {
     Row(
@@ -132,43 +131,23 @@ fun PartecipanteRow(partecipante: Partecipante) {
             .background(Color(0xFFFAFAFA), RoundedCornerShape(10.dp))
             .padding(10.dp)
     ) {
-        // Avatar Utente
-        Surface(
-            modifier = Modifier.size(40.dp),
-            shape = CircleShape,
-            color = if (partecipante.isMe) NeonYellow else Color.LightGray
-        ) {
-            Icon(
-                imageVector = Icons.Default.Person,
-                contentDescription = null,
-                modifier = Modifier.padding(8.dp),
-                tint = Color.Black
-            )
-        }
+        // NUOVO AVATAR
+        UserAvatar(name = partecipante.nome)
 
         Spacer(modifier = Modifier.width(12.dp))
 
-        // Nome e dettagli
         Column {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = partecipante.nome,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
-
-                // CORONA PER IL CAPO
+                Text(text = partecipante.nome, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 if (partecipante.isOwner) {
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "👑", fontSize = 16.sp) // Emoji Corona
+                    Text(text = "👑", fontSize = 16.sp)
                 }
             }
-
-            // Etichetta "(Tu)"
             if (partecipante.isMe) {
                 Text(text = "(Tu)", fontSize = 12.sp, color = Color.Gray)
             } else if (partecipante.isOwner) {
-                Text(text = "Organizzatore", fontSize = 12.sp, color = NeonCyan) // Colore per risaltare
+                Text(text = "Organizzatore", fontSize = 12.sp, color = AccentBlue)
             }
         }
     }

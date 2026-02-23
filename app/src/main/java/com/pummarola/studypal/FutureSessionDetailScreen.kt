@@ -77,8 +77,6 @@ fun FutureSessionDetailScreen(materia: String, onBack: () -> Unit) {
         }
 
         Spacer(modifier = Modifier.height(10.dp))
-        TextButton(onClick = onBack, modifier = Modifier.fillMaxWidth()) {
-            Text("Indietro", color = Color.Gray)
-        }
+
     }
 }

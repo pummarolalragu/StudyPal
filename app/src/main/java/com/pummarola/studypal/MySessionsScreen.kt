@@ -86,13 +86,7 @@ fun MySessionsScreen(onBack: () -> Unit, onNavigateToDetail: (String) -> Unit, n
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            onClick = onBack, // Torna alla Home
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.LightGray)
-        ) {
-            Text("Torna alla Home", color = Color.Black)
-        }
+
     }
 }
 
